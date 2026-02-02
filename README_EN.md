@@ -66,13 +66,13 @@ No additional dependencies required - uses only Python standard library and Wind
 
 ```bash
 # Basic usage
-python -m etw_monitor.main <target_executable> [wait_seconds]
+python -m PersistenceMonitor.main <target_executable> [wait_seconds]
 
 # Example: Monitor a suspicious file for 60 seconds
-python -m etw_monitor.main suspicious.exe 60
+python -m PersistenceMonitor.main suspicious.exe 60
 
 # Default wait time is 30 seconds
-python -m etw_monitor.main malware_sample.exe
+python -m PersistenceMonitor.main malware_sample.exe
 ```
 
 The tool will:
