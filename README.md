@@ -69,13 +69,13 @@ cd PersistenceMonitor
 
 ```bash
 # 基本用法
-python -m etw_monitor.main <目标程序> [等待秒数]
+python -m PersistenceMonitor.main <目标程序> [等待秒数]
 
 # 示例：监控可疑文件 60 秒
-python -m etw_monitor.main suspicious.exe 60
+python -m PersistenceMonitor.main suspicious.exe 60
 
 # 默认等待时间为 30 秒
-python -m etw_monitor.main malware_sample.exe
+python -m PersistenceMonitor.main malware_sample.exe
 ```
 
 工具执行流程：
