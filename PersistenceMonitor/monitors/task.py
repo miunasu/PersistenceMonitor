@@ -21,19 +21,23 @@ class TaskMonitor:
             
             # 解析 CSV 格式
             headers = []
-            for i, line in enumerate(lines):
-                if line.strip():
-                    parts = [p.strip('"') for p in line.split('","')]
-                    if i == 0:
-                        headers = parts
-                    else:
-                        if len(parts) > 1:
-                            task_name = parts[0].strip('"')
-                            task_info = {}
-                            for j, header in enumerate(headers):
-                                if j < len(parts):
-                                    task_info[header] = parts[j]
-                            tasks[task_name] = task_info
+            first_data_line = True
+            for line in lines:
+                if not line.strip():
+                    continue
+                parts = [p.strip('"') for p in line.split('","')]
+                if first_data_line:
+                    headers = parts
+                    first_data_line = False
+                else:
+                    if len(parts) > 1:
+                        # 任务名在第2列（索引1），第1列是主机名
+                        task_name = parts[1] if len(parts) > 1 else parts[0]
+                        task_info = {}
+                        for j, header in enumerate(headers):
+                            if j < len(parts):
+                                task_info[header] = parts[j]
+                        tasks[task_name] = task_info
             
             return tasks
         except Exception as e:
